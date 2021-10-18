@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: usermgmt-microservice
+  labels:
+    app: usermgmt-restapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: usermgmt-restapp
+  template:
+    metadata:
+      labels:
+        app: usermgmt-restapp
+    spec:
+      containers:
+        - name: usermgmt-restapp-inmemory
+          image: alvinlal/usermgmt-restapp-inmemory:latest
+          ports:
+            - containerPort: 3000
+          livenessProbe:
+            exec:
+              command:
+                - /bin/sh
+                - -c
+                - nc -z localhost 3000
+            initialDelaySeconds: 60
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /usermgmt/health-status
+              port: 3000
+            initialDelaySeconds: 60
+            periodSeconds: 10
+          

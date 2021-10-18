@@ -1,0 +1,20 @@
+{
+  "name": "usermgmt-restapp",
+  "version": "1.0.0",
+  "description": "A simple usermanagement rest app for learning kubernetes",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js"
+  },
+  "author": "alvin",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql2": "^2.3.0",
+    "redis": "^3.1.2",
+    "sequelize": "^6.6.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.13"
+  }
+}

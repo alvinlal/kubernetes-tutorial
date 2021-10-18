@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: usermgmt-microservice
+  labels:
+    app: usermgmt-restapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: usermgmt-restapp
+  template:
+    metadata:
+      labels:
+        app: usermgmt-restapp
+    spec:
+      containers:
+        - name: usermgmt-restapp-restapp-with-notifications
+          image: alvinlal/usermgmt-restapp-with-notifications:1.0.0
+          ports:
+            - containerPort: 8085
+          imagePullPolicy: Always
+          env:
+            - name: NOTIFICATION_SERVICE_HOST
+              value: "notification-clusterip-service" 
+            - name: NOTIFICATION_SERVICE_PORT
+              value: "8086"

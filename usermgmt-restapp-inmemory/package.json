@@ -1,0 +1,14 @@
+{
+  "name": "y",
+  "version": "1.0.0",
+  "description": "A simple nodejs server for testing aws eks",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "alvin",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
